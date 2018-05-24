@@ -137,6 +137,10 @@ public abstract class TestScenarios {
                     new Result(
                             // you must edit this to define the correct expectedResult yourself
                             ImmutableList.of(
+                                    new Transmitter(1, new Point(2, 5), 1),
+                                    new Transmitter(2, new Point(0, 6), 3),
+                                    new Transmitter(3, new Point(1, 2), 2),
+                                    new Transmitter(4, new Point(6, 8), 3)
                             )
                     )
             ),
@@ -155,6 +159,9 @@ public abstract class TestScenarios {
                     new Result(
                             // you must edit this to define the correct expectedResult yourself
                             ImmutableList.of(
+                                    new Transmitter(1, new Point(1, 6), 1),
+                                    new Transmitter(2, new Point(1, 0), 2),
+                                    new Transmitter(3, new Point(5, 0), 2)
                             )
                     )
             )
