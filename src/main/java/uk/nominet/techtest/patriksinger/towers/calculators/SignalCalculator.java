@@ -12,6 +12,7 @@ public class SignalCalculator {
 		distanceCalculator = calculator;
 	}
 
+	// Checks if a given receiver is covered at least by one transmitter
 	public boolean hasSignal(Receiver receiver, List<Transmitter> transmitters) {
     	return transmitters.stream().anyMatch(t -> distanceCalculator.distance(receiver.location, t.location) - t.power <= 0);
     }
