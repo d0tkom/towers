@@ -1,7 +1,5 @@
 package uk.nominet.techtest.patriksinger.towers.model;
 
-import java.util.List;
-
 public abstract class Tower {
     public final int id;
     public final Point location;

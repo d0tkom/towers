@@ -1,5 +1,7 @@
 package uk.nominet.techtest.patriksinger.towers.model;
 
+// This class defines a possible boost (extra power) given to a transmitter, with the new coverage it would give,
+// helping us to determine the cost effectiveness of the change
 public class Boost {
     public final Transmitter transmitter;
     public final int boost;
@@ -11,6 +13,8 @@ public class Boost {
         this.newCoverage = newCoverage;
     }
     
+    // This function simply returns the ratio of the given boost / newCoverage to easily determine the
+    // cost effectiveness of boost
     public double boostPerCoverage() {
     	return (double)boost / (double)newCoverage;
     }
