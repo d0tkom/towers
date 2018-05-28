@@ -52,4 +52,9 @@ public class ChebyshevDistanceTest {
     public void testScenario8() throws Exception {
         assertEquals(testScenarios.get(8).expectedResult, subject.distance(testScenarios.get(8).pointA, testScenarios.get(8).pointB));
     }
+    
+    @Test
+    public void testScenario9() throws Exception {
+        assertEquals(testScenarios.get(9).expectedResult, subject.distance(testScenarios.get(9).pointA, testScenarios.get(9).pointB));
+    }
 }
