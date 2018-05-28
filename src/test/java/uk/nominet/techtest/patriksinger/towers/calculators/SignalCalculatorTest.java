@@ -10,10 +10,11 @@ import uk.nominet.techtest.patriksinger.towers.model.Receiver;
 import static org.junit.Assert.assertEquals;
 import static uk.nominet.techtest.patriksinger.towers.optimisers.TestScenarios.testScenarios;
 
-// No TestScenarios defined here as we just use the test scenarios from the optimisers
+// No TestScenario model defined for these tests as we just use the test scenarios from OptimiserTest
 public class SignalCalculatorTest {
     private final SignalCalculator subject = new SignalCalculator(new ChebyshevDistanceCalculator());
-
+    
+    // Test hasSignal
     @Test
     public void testScenario0() throws Exception {
         assertEquals(true, subject.hasSignal(testScenarios.get(2).scenario.transmitters, testScenarios.get(2).scenario.receivers.get(0)));
@@ -33,7 +34,7 @@ public class SignalCalculatorTest {
     public void testScenario3() throws Exception {
         assertEquals(false, subject.hasSignal(testScenarios.get(4).scenario.transmitters, testScenarios.get(4).scenario.receivers.get(5)));
     }
-    
+    // Test fullCoverage
     @Test
     public void testScenario4() throws Exception {
         assertEquals(false, subject.fullCoverage(testScenarios.get(0).scenario.transmitters, testScenarios.get(0).scenario.receivers));
@@ -58,7 +59,7 @@ public class SignalCalculatorTest {
     public void testScenario8() throws Exception {
         assertEquals(false, subject.fullCoverage(testScenarios.get(4).scenario.transmitters, testScenarios.get(4).scenario.receivers));
     }
-    
+    // Test receiversWithoutSignal
     @Test
     public void testScenario9() throws Exception {
         assertEquals(
