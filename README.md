@@ -1,5 +1,5 @@
 ## Nominet Java Technical Test - Towers
-* This github repository consist an Eclipse project with a solution to the Nominet Java Technical Test. The solution can be tested by running the OptimalOptimiserTest.java in Eclipse, that will run all provided test cases against the implemented OptimalOptimiser class.
+* This github repository consist of an Eclipse project with a solution to the Nominet Java Technical Test. The solution can be tested by running the OptimalOptimiserTest.java in Eclipse, that will run all provided test cases against the implemented OptimalOptimiser class.
 * The implemented solution works the following way:
 	1. It takes in a given scenario, and finds all the possible ways the transmitters could be turned up (only one transmitter at a time) to provide more coverage.
 	2. From these it selects the boost to a given transmitter with the lowest (extra power)/(extra coverage) ratio, and applies that to the current scenario.
