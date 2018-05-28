@@ -13,7 +13,7 @@
 * Also the comments are probably a bit more verbose than it would be necessary, but it was done this way to really maximise understandability.
 
 
-
+## Original ReadMe:
 ## Introduction
 
 The Tiny Island Radio Company have a number of radio transmitter and receiver towers on a series of tiny islands. Some of the receivers are currently unable to receive a signal, and so they need you to write an application to calculate how the transmitters should be modified to ensure full coverage.
