@@ -5,9 +5,12 @@ import java.util.List;
 import uk.nominet.techtest.patriksinger.towers.model.Receiver;
 import uk.nominet.techtest.patriksinger.towers.model.Transmitter;
 
+// This SignalCalculator helps determine if a receiver has signal based on given transmitters, and
+// based on a given distance calculation method
 public class SignalCalculator {
 	private final DistanceCalculator distanceCalculator;
 	
+	// To create the object we need to specify a distance calculation method for the object to use
 	public SignalCalculator(DistanceCalculator calculator) {
 		distanceCalculator = calculator;
 	}

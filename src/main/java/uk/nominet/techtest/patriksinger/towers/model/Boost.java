@@ -14,7 +14,7 @@ public class Boost {
     }
     
     // This function simply returns the ratio of the given boost / newCoverage to easily determine the
-    // cost effectiveness of boost
+    // cost effectiveness of the boost
     public double boostPerCoverage() {
     	return (double)boost / (double)newCoverage;
     }
