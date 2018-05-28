@@ -1,3 +1,19 @@
+## Nominet Java Technical Test - Towers
+* This github repository consist an Eclipse project with a solution to the Nominet Java Technical Test. The solution can be tested by running the OptimalOptimiserTest.java in Eclipse, that will run all provided test cases against the implemented OptimalOptimiser class.
+* The implemented solution works the following way:
+	1. It takes in a given scenario, and finds all the possible ways the transmitters could be turned up (only one transmitter at a time) to provide more coverage.
+	2. From these it selects the boost to a given transmitter with the lowest (extra power)/(extra coverage) ratio, and applies that to the current scenario.
+	3. It calls itself with this new scenario, until we reach full coverage, at which point it returns with the result.
+* To model the possible 'boosts' given to a given scenario, a Boost class was created. Other options such as creating instead a BoostedTransmitter class, or just generating a list of possible next scenarios were considered too, but none of those showed to be definitely better while experimenting.
+* To calculate the distance of receivers and towers, a DistanceCalculator interface was created, with one implementation for it in the ChebyshevDistanceCalculator. It was created this way, so the distance calculation method could be changed easily.
+* To decide which receiver has signal, and other signal related calculations, a SignalCalculator class was created. The option of putting some methods like hasSignal inside the Receiver class, or fullCoverage inside the Scenario class was weighed as well, but decided on keeping these together in their own class.
+* Some extra tests were added for these new classes. The ChebyshevDistance calculator has it's own complete set of tests, while the SignalCalculator tries to use the test cases from the optimiser tests.
+* These added test still won't cover the whole program as few functions like the PossibleBoosts inside OptimalOptimiser is left out, but the main functions inside it are covered, and the test for the optimise function can show any remaining problems.
+* The aim was to use as meaningful variable and function names as possible.
+* Also the comments are probably a bit more verbose than it would be necessary, but it was done this way to really maximise understandability.
+
+
+
 ## Introduction
 
 The Tiny Island Radio Company have a number of radio transmitter and receiver towers on a series of tiny islands. Some of the receivers are currently unable to receive a signal, and so they need you to write an application to calculate how the transmitters should be modified to ensure full coverage.
