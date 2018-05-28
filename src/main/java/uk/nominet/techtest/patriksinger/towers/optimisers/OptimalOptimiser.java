@@ -54,8 +54,7 @@ public class OptimalOptimiser implements PowerOptimiser {
 	}
 	
 	// This function takes a given scenario and returns all the possible ways transmitters
-	// (a single transmitter at a time) could be turned up to provide at least +1, but no more
-	// than full coverage.
+	// (a single transmitter at a time) could be turned up to provide a better coverage
 	public List<Boost> PossibleBoosts(Scenario scenario) {
 		// List to keep track of possible boosts.
 		List<Boost> boosts = new ArrayList<Boost>();
@@ -80,8 +79,8 @@ public class OptimalOptimiser implements PowerOptimiser {
 				// Calculate the extra power the transmitter would need to provide coverage
 				int boostNeeded = distanceCalculator.distance(t.location, closestReceiver.location) - t.power;
 				Transmitter boostedTransmitter = new Transmitter(t.id, t.location, t.power + boostNeeded);
-				// Create a new list of transmitters with the new boosted transmitter to determine the new coverage it would give. It can be more than
-				// +1 in cases when we had more receivers in the same distance
+				// Create a new list of transmitters with the new boosted transmitter to determine the new coverage it would give. 
+				// It can be more than +1 in cases when we had more receivers in the same distance
 				final List<Transmitter> transmittersWithBoostedTransmitter = scenario.transmitters
 						.stream()
 						.map(x -> 
