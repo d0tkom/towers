@@ -18,8 +18,8 @@ public class SignalCalculator {
 
 	// Checks if a given receiver is covered at least by one transmitter
 	public boolean hasSignal(List<Transmitter> transmitters, Receiver receiver) {
-    	return transmitters.stream().anyMatch(t -> distanceCalculator.distance(receiver.location, t.location) - t.power <= 0);
-    }
+		return transmitters.stream().anyMatch(t -> distanceCalculator.distance(receiver.location, t.location) - t.power <= 0);
+	}
 	
 	public boolean fullCoverage(List<Transmitter> transmitters, List<Receiver> receivers) {
 		return receivers.stream().allMatch(r -> hasSignal(transmitters, r));
