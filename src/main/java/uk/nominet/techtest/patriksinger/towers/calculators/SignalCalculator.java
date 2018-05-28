@@ -1,6 +1,7 @@
 package uk.nominet.techtest.patriksinger.towers.calculators;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import uk.nominet.techtest.patriksinger.towers.model.Receiver;
 import uk.nominet.techtest.patriksinger.towers.model.Transmitter;
@@ -16,7 +17,15 @@ public class SignalCalculator {
 	}
 
 	// Checks if a given receiver is covered at least by one transmitter
-	public boolean hasSignal(Receiver receiver, List<Transmitter> transmitters) {
+	public boolean hasSignal(List<Transmitter> transmitters, Receiver receiver) {
     	return transmitters.stream().anyMatch(t -> distanceCalculator.distance(receiver.location, t.location) - t.power <= 0);
     }
+	
+	public boolean fullCoverage(List<Transmitter> transmitters, List<Receiver> receivers) {
+		return receivers.stream().allMatch(r -> hasSignal(transmitters, r));
+	}
+	
+	public List<Receiver> receiversWithoutSignal(List<Transmitter> transmitters, List<Receiver> receivers) {
+		return receivers.stream().filter(r -> !hasSignal(transmitters, r)).collect(Collectors.toList());
+	}
 }

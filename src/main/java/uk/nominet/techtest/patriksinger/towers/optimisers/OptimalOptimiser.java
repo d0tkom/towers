@@ -27,7 +27,7 @@ public class OptimalOptimiser implements PowerOptimiser {
 	@Override
 	public Result optimise(Scenario scenario) {
 		// Check if all receivers have coverage. If they have we have our solution.
-		if (scenario.receivers.stream().allMatch(r -> signalCalculator.hasSignal(r, scenario.transmitters))) {
+		if (signalCalculator.fullCoverage(scenario.transmitters, scenario.receivers)) {
 			return new Result(scenario.transmitters);
 		}
 		
@@ -64,10 +64,7 @@ public class OptimalOptimiser implements PowerOptimiser {
 			// This receiversWithoutSignal list will be used to find the closest receiver without a signal, 
 			// (closest to the current transmitter) and to exit the while loop down the line once we covered 
 			// all cases up to full coverage.
-			List<Receiver> receiversWithoutSignal = scenario.receivers
-					.stream()
-					.filter(r -> !signalCalculator.hasSignal(r, scenario.transmitters))
-					.collect(Collectors.toList());
+			List<Receiver> receiversWithoutSignal = signalCalculator.receiversWithoutSignal(scenario.transmitters, scenario.receivers);
 			
 			while (receiversWithoutSignal.size() > 0) {
 				// Find the closest receiver so we can figure out the power needed to provide coverage to it
@@ -97,15 +94,12 @@ public class OptimalOptimiser implements PowerOptimiser {
 				// our boost objects
 				int coverageAfterBoost = (int)scenario.receivers
 						.stream()
-						.filter(r -> signalCalculator.hasSignal(r, transmittersWithBoostedTransmitter))
+						.filter(r -> signalCalculator.hasSignal(transmittersWithBoostedTransmitter, r))
 						.count();
 				boosts.add(new Boost(t, boostNeeded, coverageAfterBoost));
 				// Create new list of receiversWithoutSignal to see if there are more possible cases for this transmitter.
 				// If we reached full coverage the size will be 0 and we can skip to the next transmitter
-				receiversWithoutSignal = scenario.receivers
-						.stream()
-						.filter(r -> !signalCalculator.hasSignal(r, transmittersWithBoostedTransmitter))
-						.collect(Collectors.toList());
+				receiversWithoutSignal = signalCalculator.receiversWithoutSignal(transmittersWithBoostedTransmitter, scenario.receivers);
 			}
 		}
 		
