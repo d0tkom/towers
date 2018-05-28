@@ -10,6 +10,7 @@
 * Some extra tests were added for these new classes. The ChebyshevDistance calculator has it's own complete set of tests, while the SignalCalculator tries to use the test cases from the optimiser tests.
 * These added test still won't cover the whole program as few functions like the PossibleBoosts inside OptimalOptimiser is left out, but the main functions inside it are covered, and the test for the optimise function can show any remaining problems.
 * The aim was to use as meaningful variable and function names as possible.
+* The tests are expected to be correct and well formatted, so input checks with the appropiate exceptions were not used.
 * Also the comments are probably a bit more verbose than it would be necessary, but it was done this way to make it as easy to understand as possible.
 
 
